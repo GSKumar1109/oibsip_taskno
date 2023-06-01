@@ -1,0 +1,28 @@
+body {
+    background-image: url(todo.jpg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    margin: 0;
+  }
+  .header {
+    display: flex;
+    background-color: whitesmoke;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  .todo-item {
+    display: flex;
+    color: black;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .todo-item .delete {
+    color: red;
+    cursor: pointer;
+    margin-left: 10px;
+  }
