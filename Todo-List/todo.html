@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div class="header">
+    <h1>Todo List</h1>
+    <button id="save-all">Save All</button>
+  </div>
+  
+  <form id="todo-form">
+    <input type="text" id="title-input" placeholder="Title" required>
+    <input type="text" id="description-input" placeholder="Description" required>
+    <button type="submit">Add Todo</button>
+  </form>
+  
+  <div id="todo-list">
+  </div>
+
+  <script>
+    function createTodoItem(title, description) {
+      var todoItem = document.createElement('div');
+      todoItem.className = 'todo-item';
+      
+      var titleElem = document.createElement('h3');
+      titleElem.textContent = title;
+      
+      var descElem = document.createElement('p');
+      descElem.textContent = description;
+      
+      var deleteElem = document.createElement('span');
+      deleteElem.className = 'delete';
+      deleteElem.textContent = 'Delete';
+      deleteElem.addEventListener('click', function() {
+        todoItem.remove();
+      });
+      
+      todoItem.appendChild(titleElem);
+      todoItem.appendChild(descElem);
+      todoItem.appendChild(deleteElem);
+      
+      return todoItem;
+    }
+    
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      
+      var titleInput = document.getElementById('title-input');
+      var descriptionInput = document.getElementById('description-input');
+      
+      var title = titleInput.value;
+      var description = descriptionInput.value;
+      
+      var todoItem = createTodoItem(title, description);
+      
+      var todoList = document.getElementById('todo-list');
+      todoList.appendChild(todoItem);
+      
+      titleInput.value = '';
+      descriptionInput.value = '';
+    }
+    
+    var todoForm = document.getElementById('todo-form');
+    todoForm.addEventListener('submit', handleFormSubmit);
+  </script>
+</body>
+</html>
